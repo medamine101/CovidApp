@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CovidApp</string>
+    <string name="covid_19_survey_test">Covid-19 Survey Test</string>
+    <string name="questions">Questions</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
