@@ -11,20 +11,34 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment {
 
-    private TextView stat;
+    private static View root;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
 
         UpdaterForTextView statBoxUpdater = new UpdaterForTextView(root.findViewById(R.id.statbox), getActivity());
 
-        statBoxUpdater.fetchAndUpdateText("https://corona.lmao.ninja/v2/all?yesterday", "cases");
+        DataFetcher dataFetcher = new DataFetcher();
+
+        dataFetcher.FetchTodayData(getActivity());
 
         return root;
     }
 
+    
+    public static void toResponse(){
+        TextView textView = root.findViewById(R.id.statbox);
+
+        textView.setText(DataFetcher.listByState.get(0).State);
+        
+        textView.setVisibility(View.VISIBLE);
+
+    }
+    
 }

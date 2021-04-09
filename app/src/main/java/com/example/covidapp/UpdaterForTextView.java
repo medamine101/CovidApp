@@ -19,8 +19,9 @@ public class UpdaterForTextView implements Updater {
 
     public void fetchAndUpdateText(String url, String kindOfData){
 
-        Fetch.fetch(this.context, this, url);
+        //Fetch.fetch(this.context, this, url);
 
+        FetchFromCSV.fetch(this.context,this, "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports_us/04-05-2021.csv");
     }
 
     public void changeTarget(TextView newTarget){
