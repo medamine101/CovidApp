@@ -20,10 +20,11 @@ public class HomeFragment extends Fragment {
     private TextView questionView;
     private Button buttonChoice1;
     private Button buttonChoice2;
+    private TextView title;
 
     private String answer;
     private int score = 0;
-    private int questionNumber = 0;
+    private int questionNumber = -1;
     private double percentage;
 
     @SuppressLint("DefaultLocale")
@@ -35,6 +36,7 @@ public class HomeFragment extends Fragment {
         questionView = view.findViewById( R.id.questions );
         buttonChoice1 = view.findViewById( R.id.choice1 );
         buttonChoice2 = view.findViewById( R.id.choice2 );
+        title = view.findViewById( R.id.title );
 
         updateQuestion();
 
@@ -48,18 +50,22 @@ public class HomeFragment extends Fragment {
                 buttonChoice1.setText( questionLibrary.getChoice1( questionNumber ) );
                 buttonChoice2.setText( questionLibrary.getChoice2( questionNumber ) );
             }
+            if (buttonChoice1.getText() == "Start Survey"){
+                buttonChoice2.setVisibility( View.VISIBLE );
+                title.setVisibility( View.VISIBLE );
+            }
             if (buttonChoice1.getText() == answer) {
                 score = score + 1;
             }
             if (questionNumber == questionLibrary.getLength()) {
                 if(score-1 < 3){
-                    updateScore( "low" );
+                    updateScore( "Low" );
                 }
                 else if (score-1 > 5){
-                    updateScore( "high" );
+                    updateScore( "HIGH" );
                 }
                 else {
-                    updateScore( "medium" );
+                    updateScore( "MEDIUM" );
                 }
             }
             if (questionNumber < questionLibrary.getLength()) {
@@ -74,14 +80,14 @@ public class HomeFragment extends Fragment {
             }
 
             if (questionNumber == questionLibrary.getLength()) {
-                if(score-1 < 3){
-                    updateScore( "low" );
+                if (score-1 < 3){
+                    updateScore( "LOW" );
                 }
                 else if (score-1 > 5){
-                    updateScore( "high" );
+                    updateScore( "HIGH" );
                 }
                 else {
-                    updateScore( "medium" );
+                    updateScore( "MEDIUM" );
                 }
             }
             if (questionNumber < questionLibrary.getLength()) {
@@ -90,17 +96,27 @@ public class HomeFragment extends Fragment {
         } );
         return view;
     }
+    @SuppressLint("SetTextI18n")
     public void updateQuestion () {
-        questionView.setText( questionLibrary.getQuestion( questionNumber ) );
-        buttonChoice1.setText( questionLibrary.getChoice1( questionNumber ) );
-        buttonChoice2.setText( questionLibrary.getChoice2( questionNumber ) );
-        answer = questionLibrary.getCorrectAnswer( questionNumber );
+        if (questionNumber == -1){
+            questionView.setText( "Welcome to Covid-19 Tracker App! \n\n" +
+                    "Click the button below to start the survey" );
+            buttonChoice1.setText( "Start Survey" );
+            buttonChoice2.setVisibility( View.GONE );
+            title.setVisibility( View.GONE );
+        }
+        else{
+            questionView.setText( questionLibrary.getQuestion( questionNumber ) );
+            buttonChoice1.setText( questionLibrary.getChoice1( questionNumber ) );
+            buttonChoice2.setText( questionLibrary.getChoice2( questionNumber ) );
+            answer = questionLibrary.getCorrectAnswer( questionNumber );
+        }
         questionNumber++;
     }
 
     @SuppressLint("SetTextI18n")
-    public void updateScore (String point){
-        questionView.setText( "The chance of you having Covid-19 is " + point );
+    public void updateScore (String word){
+        questionView.setText( "Chance Of Having Covid-19: " + word );
         buttonChoice1.setText( "Try Again" );
         buttonChoice2.setVisibility( View.GONE );
     }

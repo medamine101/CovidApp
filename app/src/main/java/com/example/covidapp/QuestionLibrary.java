@@ -1,6 +1,7 @@
 package com.example.covidapp;
 
 public class QuestionLibrary {
+
     private final String[] questions = {
             "1. Have you experienced any symptoms of COVID-19? \n\n" +
                     "(ex. sore throat, fever over 100, cough, headache, shortness of breath or difficulty breathing, fatigue, " +
@@ -45,4 +46,5 @@ public class QuestionLibrary {
     public String getCorrectAnswer(int a){
         return correctAnswers[a];
     }
+
 }
