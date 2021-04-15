@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
+    android:focusable="true">
 
-    <TextView
+    <EditText
+        android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Map Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Covid Test(s) Notebook"
+        android:translationX="280px"
+        android:translationY="20px" />
 
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="314dp"
+        android:layout_height="432dp"
+        android:background="#FAF2F2"
+        android:defaultFocusHighlightEnabled="true"
+        android:translationX="120px"
+        android:translationY="170px" />
+
+    <Button
+        android:id="@+id/addinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Test"
+        android:translationX="680px"
+        android:translationY="1400px" />
+
+    <Button
+        android:id="@+id/editinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Test Result"
+        android:translationX="110px"
+        android:translationY="1400px" />
 </RelativeLayout>
