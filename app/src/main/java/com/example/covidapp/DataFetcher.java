@@ -86,7 +86,9 @@ public class DataFetcher implements Updater{
         return inputDate;
     }
 
-
+    //COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
+    //URL: https://github.com/CSSEGISandData/COVID-19
+    //Thanks to Johns Hopkins University for the data!
     public void FetchTodayData(Context context, HomeFragment caller){
 
         fragment = caller;
