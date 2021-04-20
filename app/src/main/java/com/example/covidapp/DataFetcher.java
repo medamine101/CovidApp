@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -53,6 +55,7 @@ class CSVData implements Comparable<CSVData>{
 public class DataFetcher implements Updater{
 
     public static ArrayList<CSVData> listByState = new ArrayList<CSVData>();
+    HomeFragment fragment;
 
     public static String GetTodayDate(){
 
@@ -63,7 +66,7 @@ public class DataFetcher implements Updater{
     }
 
     private String getPreviousDate(String inputDate){
-        //inputDate = "15-12-2015"; // for example
+
         SimpleDateFormat  format = new SimpleDateFormat("MM-dd-yyyy");
         try {
             Date date = format.parse(inputDate);
@@ -84,8 +87,10 @@ public class DataFetcher implements Updater{
     }
 
 
-    public void FetchTodayData(Context context){
+    public void FetchTodayData(Context context, HomeFragment caller){
 
+        fragment = caller;
+        
         String urlBeginning = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports_us/";
 
         String urlEnd = ".csv";
@@ -116,7 +121,7 @@ public class DataFetcher implements Updater{
 
         }
 
-        HomeFragment.toResponse();
+        fragment.toResponse();
 
     }
 }
