@@ -7,36 +7,52 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
+        android:layout_width="228dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="97dp"
+        android:layout_marginEnd="86dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="COVID-19 Test(s) Notebook"
-        android:translationX="280px"
-        android:translationY="20px" />
+        android:text="COVID-19 Test(s) Notebook" />
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="314dp"
-        android:layout_height="432dp"
+        android:layout_width="334dp"
+        android:layout_height="445dp"
+        android:layout_above="@+id/editinfo"
+        android:layout_below="@+id/editTextTextPersonName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="37dp"
         android:background="#FAF2F2"
-        android:defaultFocusHighlightEnabled="true"
-        android:translationX="120px"
-        android:translationY="170px" />
+        android:defaultFocusHighlightEnabled="true" />
 
     <Button
         android:id="@+id/addinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Test"
-        android:translationX="680px"
-        android:translationY="1400px" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="259dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="130dp"
+        android:text="Add Test" />
 
     <Button
         android:id="@+id/editinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Test Result"
-        android:translationX="110px"
-        android:translationY="1400px" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginEnd="195dp"
+        android:layout_marginBottom="128dp"
+        android:text="Edit Test Result" />
 </RelativeLayout>
