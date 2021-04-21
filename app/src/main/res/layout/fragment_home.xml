@@ -16,13 +16,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/covid_19_survey_test"
+        android:text="COVID-19 Survey Test"
         android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:text="@string/questions"
+        android:text="Questions"
         android:textSize="20sp"
         android:padding="8dp"
         android:layout_margin="10dp"
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/yes"
+        android:text="Yes"
         android:background="#0091EA"
         android:textColor="#fff"
         android:padding="8dp"
@@ -46,7 +46,7 @@
         android:layout_marginBottom="24dp"
         android:background="#0091EA"
         android:padding="8dp"
-        android:text="@string/no"
+        android:text="No"
         android:textColor="#fff"
         tools:visibility="visible" />
 

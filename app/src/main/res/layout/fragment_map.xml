@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Covid Test(s) Notebook"
+        android:text="COVID-19 Test(s) Notebook"
         android:translationX="280px"
         android:translationY="20px" />
 

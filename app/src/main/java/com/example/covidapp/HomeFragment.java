@@ -116,7 +116,13 @@ public class HomeFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     public void updateScore (String word){
-        questionView.setText( "Chance Of Having Covid-19: " + word );
+        if (word.equals( "LOW" )) {
+            questionView.setText( "Chance Of Having Covid-19: " + word );
+        }
+        else{
+            questionView.setText( "Chance Of Having Covid-19: " + word + "\n\n " +
+                    "You might have COVID-19! \n\n You should go get tested!");
+        }
         buttonChoice1.setText( "Try Again" );
         buttonChoice2.setVisibility( View.GONE );
     }

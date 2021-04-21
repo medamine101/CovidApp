@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
                      * one of the three available fragments
                      */
                     switch(item.getItemId()){
-                        case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
+                        case R.id.nav_help:
+                            selectedFragment = new HelpFragment();
                             break;
                         case R.id.nav_map:
                             selectedFragment = new MapFragment();
                             break;
-                        case R.id.nav_help:
-                            selectedFragment = new HelpFragment();
+                        case R.id.nav_home:
+                            selectedFragment = new HomeFragment();
                             break;
                     }
 

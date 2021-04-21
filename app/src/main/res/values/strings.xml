@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">CovidApp</string>
-    <string name="covid_19_survey_test">Covid-19 Survey Test</string>
-    <string name="questions">Questions</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
+    <string name="home_fragment_title">COVID-19 Statistics</string>
+    <string name="textitem">waiting...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
