@@ -13,24 +13,30 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.app.Activity;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MapFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     Button edit;
     Button add;
+    Button refresh;
+    TextView alert;
     ListView list;
     String[] testslist = new String[]{};
     final List<String> tests = new ArrayList<String>((Arrays.asList(testslist)));
-    int currFocus = 0;
+    int currFocus = -1;
 
 
     @Nullable
@@ -42,7 +48,8 @@ public class MapFragment extends Fragment implements DatePickerDialog.OnDateSetL
         edit = view.findViewById(R.id.editinfo);
         add = view.findViewById(R.id.addinfo);
         list = view.findViewById(R.id.list);
-
+        refresh = view.findViewById(R.id.refresh);
+        alert = view.findViewById(R.id.alert);
 
 
         // Create an ArrayAdapter from List
@@ -62,6 +69,21 @@ public class MapFragment extends Fragment implements DatePickerDialog.OnDateSetL
             }
         });
 
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i=0;i<tests.size();i++){
+                    DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+                    Date date = new Date();
+                    String day = dateFormat.format(date);
+                    if (tests.get(i).charAt(8) == 'W'){
+                        alert.setText("Your next pending test date is on " + tests.get(i).substring(23));
+                    }
+                }
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
@@ -78,6 +100,11 @@ public class MapFragment extends Fragment implements DatePickerDialog.OnDateSetL
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (currFocus == -1){
+                    return;
+                }
+
                 String val = tests.get(currFocus);
                 if (val.charAt(8) =='W') {
                     val = "Status: Negative" + val.substring(15);
@@ -88,6 +115,17 @@ public class MapFragment extends Fragment implements DatePickerDialog.OnDateSetL
                 }
                 tests.set(currFocus,val);
                 arrayAdapter.notifyDataSetChanged();
+
+                for (int i=0;i<tests.size();i++){
+                    DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+                    Date date = new Date();
+                    String day = dateFormat.format(date);
+                    if (tests.get(i).charAt(8) == 'W'){
+                        alert.setText("Your next pending test date is on " + tests.get(i).substring(23));
+                    } else {
+                        alert.setText("No pending tests.");
+                    }
+                }
         };
         });
         return view;

@@ -5,6 +5,17 @@
     android:background="@android:color/holo_blue_light"
     android:focusable="true">
 
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="128dp"
+        android:text="Refresh" />
+
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="228dp"
@@ -19,8 +30,8 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="334dp"
-        android:layout_height="445dp"
+        android:layout_width="wrap_content"
+        android:layout_height="319dp"
         android:layout_above="@+id/editinfo"
         android:layout_below="@+id/editTextTextPersonName"
         android:layout_alignParentStart="true"
@@ -28,31 +39,44 @@
         android:layout_marginStart="43dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="34dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginBottom="23dp"
         android:background="#FAF2F2"
-        android:defaultFocusHighlightEnabled="true" />
+        android:defaultFocusHighlightEnabled="true">
+
+    </ListView>
 
     <Button
         android:id="@+id/addinfo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="259dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="130dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="128dp"
         android:text="Add Test" />
 
     <Button
         android:id="@+id/editinfo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="59dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginEnd="195dp"
-        android:layout_marginBottom="128dp"
-        android:text="Edit Test Result" />
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="127dp"
+        android:text="Edit Test " />
+
+    <TextView
+        android:id="@+id/alert"
+        android:layout_width="336dp"
+        android:layout_height="78dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="31dp"
+        android:text="Next Test Date: " />
+
 </RelativeLayout>
