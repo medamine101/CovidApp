@@ -1,15 +1,17 @@
 package com.example.covidapp;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import java.text.NumberFormat;
+import java.text.DecimalFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,26 +77,46 @@ public class DataFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_data, container, false);
 
 
+        NumberFormat myFormat = NumberFormat.getInstance();
+        myFormat.setGroupingUsed(true); // this will also round numbers
+
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        decimalFormat.setGroupingUsed(true);
+        decimalFormat.setGroupingSize(3);
+
+
         TextView title = root.findViewById(R.id.title2);
         title.setText(DataFetcher.listByState.get(stateToUse).State);
 
         TextView confirmed = root.findViewById(R.id.confirmedView);
-        confirmed.setText("Confirmed Cases: " + DataFetcher.listByState.get(stateToUse).Confirmed);
+        confirmed.setText("Total Confirmed Cases: " + decimalFormat.format(Double.parseDouble(DataFetcher.listByState.get(stateToUse).Confirmed)));
 
         TextView deaths = root.findViewById(R.id.DeathView);
-        deaths.setText("Number of Deaths: " + DataFetcher.listByState.get(stateToUse).Deaths);
+        deaths.setText("Total Number of Deaths: " + decimalFormat.format(Double.parseDouble(DataFetcher.listByState.get(stateToUse).Deaths)));
 
-        TextView fips = root.findViewById(R.id.fipsView);
-        fips.setText("FIPS: " + DataFetcher.listByState.get(stateToUse).FIPS);
+        try {
+            TextView incident = root.findViewById(R.id.incidentRateView);
+            incident.setText("Incident Rate: " + decimalFormat.format(Double.parseDouble(DataFetcher.listByState.get(stateToUse).IncidentRate)));
+        }catch (Exception e){
+            TextView incident = root.findViewById(R.id.incidentRateView);
+            incident.setText("Incident Rate: " + "Data Unavailable!");
+        }
 
-        TextView incident = root.findViewById(R.id.incidentRateView);
-        incident.setText("Incident Rate: " + DataFetcher.listByState.get(stateToUse).IncidentRate);
+        try {
+            TextView total = root.findViewById(R.id.totalView);
+            total.setText("Total Test Results: " + decimalFormat.format(Double.parseDouble(DataFetcher.listByState.get(stateToUse).TotalTestResults)));
+        }catch (Exception e){
+            TextView total = root.findViewById(R.id.totalView);
+            total.setText("Total Test Results: " + "Data Unavailable!");
+        }
 
-        TextView total = root.findViewById(R.id.totalView);
-        total.setText("Total Test Results: " + DataFetcher.listByState.get(stateToUse).TotalTestResults);
-
-        TextView fatality = root.findViewById(R.id.fatalityView);
-        fatality.setText("Testing Rate: " + DataFetcher.listByState.get(stateToUse).CaseFatalityRate);
+        try {
+            TextView fatality = root.findViewById(R.id.fatalityView);
+            fatality.setText("Case Fatality Rate: " + decimalFormat.format(Double.parseDouble(DataFetcher.listByState.get(stateToUse).CaseFatalityRate)) + "%");
+        }catch (Exception e){
+            TextView fatality = root.findViewById(R.id.fatalityView);
+            fatality.setText("Case Fatality Rate: " + "Data Unavailable!");
+        }
 
         Button backButton = root.findViewById(R.id.button);
 
