@@ -18,15 +18,14 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="228dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="97dp"
-        android:layout_marginEnd="86dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="COVID-19 Test(s) Notebook" />
+        android:text="COVID-19 Test(s) Notebook"
+        android:textAlignment="center" />
 
     <ListView
         android:id="@+id/list"
